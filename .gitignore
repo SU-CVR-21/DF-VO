@@ -8,6 +8,8 @@
 result/
 dataset/
 model_zoo/
+dist/
+build/
 
 # temporary files
 tmp/
