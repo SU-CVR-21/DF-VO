@@ -28,7 +28,7 @@ from libs.matching.depth_consistency import DepthConsistency
 from libs.tracker import EssTracker, PnpTracker
 from libs.general.utils import *
 
-from libs.relativepose import *
+from libs.relativepose.standard import *
 from numpy import linalg as LA
 
 class DFVO():
@@ -367,8 +367,20 @@ class DFVO():
 
         # create instance
         essential = relativeposepython.EssentialClass(obs1, obs2, weights,  relativeposepython.EssentialClass.Options(), np.ones([3,3]))
+
+        # set options 
+        #estimation_params = robustrelativeposepython.GNCEssentialClass.Options()
+        #estimation_params.estimation_verbose=0;
+        #estimation_params.gnc_robust = robustrelativeposepython.GNCEssentialClass.GNCRobustFunction.TUKEY;
+        #estimation_params.use_idx_relaxation=0;
+
+        # create instance
+        #essential = robustrelativeposepython.GNCEssentialClass(obs1, obs2, weights, estimation_params, np.ones([3,3])                )
+
         # solve
         results = essential.getResults()
+        #results = essential.getResultGNC()
+
         # retrieve data
 
         # essential matrix
